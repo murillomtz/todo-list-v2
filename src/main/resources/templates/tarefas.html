@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--Referenciando o Thymeleaf-->
+<html xmlns:th="http://thymeleaf.org">
+
+<body>
+
+
+    <section>
+        <!--Listagem de tarefaer-->
+        <div>
+            <!--breadcrumb - Voltar para home-->
+            <nav>
+                <ol style="background-color: white;padding-left: 0px;">
+                    <li aria-current="page">tarefas</li>
+                </ol>
+            </nav>
+            <!--Cards dos tarefaers-->
+            <div th:each="tarefa :${tarefas}">
+                <div>tarefa#<span th:text="${tarefa.id}"></span></div>
+                <div>
+                    <p style="font-size: 0.8rem;">
+                        <span th:text="${tarefa.titulo}"></span>,
+                        <span th:text="${tarefa.descricao}"></span>
+                        <span th:text="${tarefa.data}"></span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </section>
+
+</body>
+
+
+</html>
