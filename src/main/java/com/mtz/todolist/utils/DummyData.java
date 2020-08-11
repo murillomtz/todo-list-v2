@@ -7,8 +7,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import com.mtz.todolist.model.CompartilhamentoTarefas;
 import com.mtz.todolist.model.Tarefa;
 import com.mtz.todolist.model.Usuario;
+import com.mtz.todolist.repository.CompartilhamentoRepository;
 import com.mtz.todolist.repository.TarefaRepository;
 import com.mtz.todolist.repository.UsuarioRepository;
 
@@ -24,6 +26,8 @@ public class DummyData {
     TarefaRepository tarefaRepository;
     @Autowired
     UsuarioRepository usuarioRepository;
+    @Autowired
+    CompartilhamentoRepository compartilhamentoRepository;
 
     @PostConstruct
     public void savePosts() {
@@ -47,10 +51,23 @@ public class DummyData {
         user4.getTarefas().addAll(Arrays.asList(t1, t4, t5));
         user5.getTarefas().addAll(Arrays.asList(t1, t2));
 
-        t1.getCompartilhamentos().addAll(Arrays.asList(user1.getId(), user2.getId()));
-        t2.getCompartilhamentos().addAll(Arrays.asList(user2.getId()));
-        t3.getCompartilhamentos().addAll(Arrays.asList(user4.getId()));
-        t4.getCompartilhamentos().addAll(Arrays.asList(user3.getId()));
+        CompartilhamentoTarefas ct1 = new CompartilhamentoTarefas(null, user1, t1);
+        CompartilhamentoTarefas ct2 = new CompartilhamentoTarefas(null, user1, t2);
+        CompartilhamentoTarefas ct3 = new CompartilhamentoTarefas(null, user2, t2);
+        CompartilhamentoTarefas ct4 = new CompartilhamentoTarefas(null, user4, t3);
+        CompartilhamentoTarefas ct5 = new CompartilhamentoTarefas(null, user3, t4);
+
+        List<CompartilhamentoTarefas> compartilhamentos = new ArrayList<>();
+        t1.getCompartilhamentos().addAll(Arrays.asList(ct1, ct2));
+        t2.getCompartilhamentos().add(ct3);
+        t3.getCompartilhamentos().add(ct4);
+        t4.getCompartilhamentos().add(ct5);
+
+        compartilhamentos.add(ct1);
+        compartilhamentos.add(ct2);
+        compartilhamentos.add(ct3);
+        compartilhamentos.add(ct4);
+        compartilhamentos.add(ct5);
 
         usuarios.add(user1);
         usuarios.add(user2);
@@ -63,6 +80,11 @@ public class DummyData {
         tarefas.add(t3);
         tarefas.add(t4);
         tarefas.add(t5);
+
+        for (CompartilhamentoTarefas task : compartilhamentos) {
+            CompartilhamentoTarefas ps = compartilhamentoRepository.save(task);
+            System.out.println(ps.getId());
+        }
 
         for (Usuario user : usuarios) {
             Usuario postSaved = usuarioRepository.save(user);

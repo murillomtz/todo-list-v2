@@ -2,8 +2,10 @@ package com.mtz.todolist.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -15,6 +17,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -49,9 +53,12 @@ public class Usuario implements Serializable {
 
     // Cascade para apagar as tarefas do DB quando excluir Usuario
     // Um usuário para varias tarefas.
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "usuario")
     @CollectionTable(name = "TARAFAS_USUARIO")
     private List<Tarefa> tarefas = new ArrayList<>();
+
+    @OneToMany(mappedBy = "usuario")
+    private Set<CompartilhamentoTarefas> compUser = new HashSet<>();
 
     public Usuario() {
     }
@@ -136,6 +143,14 @@ public class Usuario implements Serializable {
 
     public void setTarefas(List<Tarefa> tarefas) {
         this.tarefas = tarefas;
+    }
+
+    public Set<CompartilhamentoTarefas> getCompUser() {
+        return this.compUser;
+    }
+
+    public void setCompUser(Set<CompartilhamentoTarefas> compUser) {
+        this.compUser = compUser;
     }
 
     @Override

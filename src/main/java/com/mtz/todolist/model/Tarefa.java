@@ -16,8 +16,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
@@ -44,22 +46,13 @@ public class Tarefa implements Serializable {
 
     private Boolean concluida;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne()
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    // @ElementCollection(fetch = FetchType.EAGER) // GARATIA Q QUANDO BUSCAR OS
-    // CLIENTES NO BD, SEJA BUSCADO O PERFIL
-    @ElementCollection
-    @CollectionTable(name = "COMPARTILHAMENTOS")
-    // @JoinColumn(name = "TAREFA_ID") */) // CRIA UMA TABELA
-    // COM O ID E
-    // ID_USUARIO
-    // @Column(name = "COMP")
-
-    // @JoinTable(name = "COMPARTILHAMENTOS", joinColumns = @JoinColumn(name =
-    // "TAREFA_ID"), inverseJoinColumns = @JoinColumn(name = "usuario_id"))
-    private Set<Long> compartilhamentos = new HashSet<>();
+   // @ElementCollection
+    @OneToMany(mappedBy = "tarefa")
+    private Set<CompartilhamentoTarefas> compartilhamentos = new HashSet<>();
 
     public Tarefa() {
     }
@@ -133,11 +126,11 @@ public class Tarefa implements Serializable {
         this.usuario = usuario;
     }
 
-    public Set<Long> getCompartilhamentos() {
+    public Set<CompartilhamentoTarefas> getCompartilhamentos() {
         return this.compartilhamentos;
     }
 
-    public void setCompartilhamentos(Set<Long> compartilhamentos) {
+    public void setCompartilhamentos(Set<CompartilhamentoTarefas> compartilhamentos) {
         this.compartilhamentos = compartilhamentos;
     }
 
