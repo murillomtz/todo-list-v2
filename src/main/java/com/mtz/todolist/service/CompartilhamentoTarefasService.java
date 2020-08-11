@@ -1,10 +1,10 @@
 package com.mtz.todolist.service;
 
-import java.util.List;
-
 import com.mtz.todolist.model.CompartilhamentoTarefas;
 
-public interface CompartilhamentoService {
+import java.util.List;
+
+public interface CompartilhamentoTarefasService {
 
     List<CompartilhamentoTarefas> findAll();
 
@@ -16,5 +16,6 @@ public interface CompartilhamentoService {
 
     void delete(CompartilhamentoTarefas compartilhamentoTarefas);
 
-    boolean existsById(long compartilhamentoTarefas);
+    boolean existsById(long compartilhamentoTarefasId);
+
 }

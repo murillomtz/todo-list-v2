@@ -1,30 +1,14 @@
 package com.mtz.todolist.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "TB_TAREFA")
@@ -47,14 +31,12 @@ public class Tarefa implements Serializable {
 
     private Boolean concluida;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-    // @ElementCollection
-
-    @ManyToMany(mappedBy = "tarefas")
-    private Set<Usuario> compartilhamentos = new HashSet<>();
+    @OneToMany(mappedBy = "tarefa")
+    private List<CompartilhamentoTarefas> compartilhamentos = new ArrayList<>();
 
     public Tarefa() {
     }
@@ -128,11 +110,11 @@ public class Tarefa implements Serializable {
         this.usuario = usuario;
     }
 
-    public Set<Usuario> getCompartilhamentos() {
+    public List<CompartilhamentoTarefas> getCompartilhamentos() {
         return this.compartilhamentos;
     }
 
-    public void setCompartilhamentos(Set<Usuario> compartilhamentos) {
+    public void setCompartilhamentos(List<CompartilhamentoTarefas> compartilhamentos) {
         this.compartilhamentos = compartilhamentos;
     }
 
