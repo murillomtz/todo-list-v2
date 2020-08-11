@@ -1,26 +1,13 @@
 package com.mtz.todolist.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "TB_USUARIO")
@@ -43,7 +30,7 @@ public class Usuario implements Serializable {
     @Column(unique = true)
     private String email;
 
-    @JsonIgnore // Para nao tornar visivel a senha quando for puxar o perfil do cliente
+    @JsonIgnore
     @NotBlank
     private String senha;
 
@@ -51,14 +38,11 @@ public class Usuario implements Serializable {
 
     private Boolean adm;
 
-    // Cascade para apagar as tarefas do DB quando excluir Usuario
-    // Um usuário para varias tarefas.
-    @ManyToMany
-    @JoinTable(name = "compartilhamento", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "tarefa_id"))
-    private List<Tarefa> tarefas = new ArrayList<>();
+    @OneToMany(mappedBy = "usuario")
+    private List<Tarefa> tarefasProprias = new ArrayList<>();
 
-    // @OneToMany(mappedBy = "usuario")
-    // private Set<CompartilhamentoTarefas> compUser = new HashSet<>();
+    @OneToMany(mappedBy = "usuario")
+    private List<CompartilhamentoTarefas> tarefasCompartilhadas = new ArrayList<>();
 
     public Usuario() {
     }
@@ -137,20 +121,29 @@ public class Usuario implements Serializable {
         this.adm = adm;
     }
 
-    public List<Tarefa> getTarefas() {
-        return this.tarefas;
+    public List<CompartilhamentoTarefas> getTarefasCompartilhadas() {
+        return this.tarefasCompartilhadas;
     }
 
-    public void setTarefas(List<Tarefa> tarefas) {
-        this.tarefas = tarefas;
+    public void setTarefasCompartilhadas(List<CompartilhamentoTarefas> tarefas) {
+        this.tarefasCompartilhadas = tarefas;
     }
 
-    /*
-     * public Set<CompartilhamentoTarefas> getCompUser() { return this.compUser; }
-     * 
-     * public void setCompUser(Set<CompartilhamentoTarefas> compUser) {
-     * this.compUser = compUser; }
-     */
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public List<Tarefa> getTarefasProprias() {
+        return tarefasProprias;
+    }
+
+    public void setTarefasProprias(List<Tarefa> tarefasProprias) {
+        this.tarefasProprias = tarefasProprias;
+    }
 
     @Override
     public boolean equals(Object o) {
