@@ -11,8 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "TB_COMPARTILHAMENTO")
+//@Entity
+//@Table(name = "TB_COMPARTILHAMENTO")
 public class CompartilhamentoTarefas implements Serializable {
 
     private static final long serialVersionUID = 1L;

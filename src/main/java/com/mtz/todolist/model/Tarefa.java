@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -50,9 +51,10 @@ public class Tarefa implements Serializable {
     @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
-   // @ElementCollection
-    @OneToMany(mappedBy = "tarefa")
-    private Set<CompartilhamentoTarefas> compartilhamentos = new HashSet<>();
+    // @ElementCollection
+
+    @ManyToMany(mappedBy = "tarefas")
+    private Set<Usuario> compartilhamentos = new HashSet<>();
 
     public Tarefa() {
     }
@@ -126,11 +128,11 @@ public class Tarefa implements Serializable {
         this.usuario = usuario;
     }
 
-    public Set<CompartilhamentoTarefas> getCompartilhamentos() {
+    public Set<Usuario> getCompartilhamentos() {
         return this.compartilhamentos;
     }
 
-    public void setCompartilhamentos(Set<CompartilhamentoTarefas> compartilhamentos) {
+    public void setCompartilhamentos(Set<Usuario> compartilhamentos) {
         this.compartilhamentos = compartilhamentos;
     }
 

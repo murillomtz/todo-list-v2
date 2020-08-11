@@ -10,14 +10,14 @@ import java.util.Set;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -53,12 +53,12 @@ public class Usuario implements Serializable {
 
     // Cascade para apagar as tarefas do DB quando excluir Usuario
     // Um usuário para varias tarefas.
-    @OneToMany(mappedBy = "usuario")
-    @CollectionTable(name = "TARAFAS_USUARIO")
+    @ManyToMany
+    @JoinTable(name = "compartilhamento", joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "tarefa_id"))
     private List<Tarefa> tarefas = new ArrayList<>();
 
-    @OneToMany(mappedBy = "usuario")
-    private Set<CompartilhamentoTarefas> compUser = new HashSet<>();
+    // @OneToMany(mappedBy = "usuario")
+    // private Set<CompartilhamentoTarefas> compUser = new HashSet<>();
 
     public Usuario() {
     }
@@ -145,13 +145,12 @@ public class Usuario implements Serializable {
         this.tarefas = tarefas;
     }
 
-    public Set<CompartilhamentoTarefas> getCompUser() {
-        return this.compUser;
-    }
-
-    public void setCompUser(Set<CompartilhamentoTarefas> compUser) {
-        this.compUser = compUser;
-    }
+    /*
+     * public Set<CompartilhamentoTarefas> getCompUser() { return this.compUser; }
+     * 
+     * public void setCompUser(Set<CompartilhamentoTarefas> compUser) {
+     * this.compUser = compUser; }
+     */
 
     @Override
     public boolean equals(Object o) {

@@ -9,11 +9,12 @@
 <body>
     <section>
         <div class="container" style="width: 70%; padding-bottom: 30px; padding-top: 30px;">
-            <div class="card text-right" style="width: rem;" th:each="tarefa :${tarefas}">
-                <div class="card-body ">
+            <div class="card text-right" style="width: rem; margin-bottom: 10px;margin-top: 10px;" th:each="tarefa :${tarefas}">
+                <div class="card-body " >
                     <h5 class="card-title"><span th:text="${tarefa.titulo}"></span></h5>
                     <p class="card-text"><span th:text="${tarefa.descricao}"></span></p>
-                    <a href="#" class="text-right btn btn-primary ">Mais detalhes</a>
+                    <!--CC = sigla do controler#nomeDoMetodo-->
+                    <a th:href="${(#mvc.url('TC#getTarefaDetails').arg(0, tarefa.id)).build()}" class="text-right btn btn-primary ">Mais detalhes</a>
                 </div>
             </div>
         </div>
