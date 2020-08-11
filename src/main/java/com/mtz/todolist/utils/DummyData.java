@@ -81,10 +81,10 @@ public class DummyData {
         tarefas.add(t4);
         tarefas.add(t5);
 
-        for (CompartilhamentoTarefas task : compartilhamentos) {
+        /*for (CompartilhamentoTarefas task : compartilhamentos) {
             CompartilhamentoTarefas ps = compartilhamentoRepository.save(task);
             System.out.println(ps.getId());
-        }
+        }*/
 
         for (Usuario user : usuarios) {
             Usuario postSaved = usuarioRepository.save(user);

@@ -2,32 +2,21 @@
 <!--Referenciando o Thymeleaf-->
 <html xmlns:th="http://thymeleaf.org">
 
+<div th:replace="includes/head :: head"></div>
+<div th:replace="includes/header :: header"></div>
+
+
 <body>
-
-
     <section>
-        <!--Listagem de tarefaer-->
-        <div>
-            <!--breadcrumb - Voltar para home-->
-            <nav>
-                <ol style="background-color: white;padding-left: 0px;">
-                    <li aria-current="page">tarefas</li>
-                </ol>
-            </nav>
-            <!--Cards dos tarefaers-->
-            <div th:each="tarefa :${tarefas}">
-                <div>tarefa#<span th:text="${tarefa.id}"></span></div>
-                <div>
-                    <p style="font-size: 0.8rem;">
-                        <span th:text="${tarefa.titulo}"></span>,
-                        <span th:text="${tarefa.descricao}"></span>
-                        <span th:text="${tarefa.data}"></span>
-                    </p>
+        <div class="container" style="width: 70%; padding-bottom: 30px; padding-top: 30px;">
+            <div class="card text-right" style="width: rem;" th:each="tarefa :${tarefas}">
+                <div class="card-body ">
+                    <h5 class="card-title"><span th:text="${tarefa.titulo}"></span></h5>
+                    <p class="card-text"><span th:text="${tarefa.descricao}"></span></p>
+                    <a href="#" class="text-right btn btn-primary ">Mais detalhes</a>
                 </div>
             </div>
-
         </div>
-
 
     </section>
 
