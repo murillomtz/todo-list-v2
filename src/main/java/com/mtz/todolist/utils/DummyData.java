@@ -28,7 +28,7 @@ public class DummyData {
         this.compartilhamentoRepository = compartilhamentoRepository;
     }
 
-    @PostConstruct
+    //@PostConstruct
     public void savePosts() {
 
         List<Usuario> usuarios = new ArrayList<>();
@@ -52,12 +52,14 @@ public class DummyData {
         CompartilhamentoTarefas ct3 = new CompartilhamentoTarefas(null, user2, t3);
         CompartilhamentoTarefas ct4 = new CompartilhamentoTarefas(null, user3, t4);
         CompartilhamentoTarefas ct5 = new CompartilhamentoTarefas(null, user4, t5);
+        CompartilhamentoTarefas ct6 = new CompartilhamentoTarefas(null, user2, t1);
 
         compartilhamentos.add(ct1);
         compartilhamentos.add(ct2);
         compartilhamentos.add(ct3);
         compartilhamentos.add(ct4);
         compartilhamentos.add(ct5);
+        compartilhamentos.add(ct6);
 
         usuarios.add(user1);
         usuarios.add(user2);

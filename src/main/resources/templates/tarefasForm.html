@@ -7,7 +7,36 @@
 
 
 <body>
-  Ola
+   <section>
+
+      <div class="container" style="width: 60%; padding-bottom: 30px;padding-top: 30px;">
+         <th:block th:include="mensagemValidacao"></th:block>
+         <form method="post">
+
+            <div class="form-group">
+               <input type="text" class="form-control" name="titulo" placeholder="Título *">
+            </div>
+
+            <textarea id="summernote" type="text" class="form-control" name="descricao" placeholder="Descrição *"></textarea>
+
+            <small class="form-text text-muted">(*) Campos obrigatórios</small>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Publicar</button>
+            <a href="/tarefas" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+
+         </form>
+      </div>
+   </section>
+
+   <script>
+
+      $('#summernote').summernote({
+         placeholde: 'Texto *',
+         tabsize: 2,
+         height: 300
+      });
+   </script>
+
 </body>
 
 

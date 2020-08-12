@@ -12,8 +12,8 @@
             <div class="card text-right" style="width: rem; margin-bottom: 10px;margin-top: 10px;" th:each="tarefa :${tarefas}">
                 <div class="card-body " >
                     <h5 class="card-title"><span th:text="${tarefa.titulo}"></span></h5>
-                    <p class="card-text"><span th:text="${tarefa.descricao}"></span></p>
-                    <!--CC = sigla do controler#nomeDoMetodo-->
+                    <p class="card-text"><span th:utext="${tarefa.descricao}"></span></p>
+                    <!--TC = sigla do controler#nomeDoMetodo-->
                     <a th:href="${(#mvc.url('TC#getTarefaDetails').arg(0, tarefa.id)).build()}" class="text-right btn btn-primary ">Mais detalhes</a>
                 </div>
             </div>
