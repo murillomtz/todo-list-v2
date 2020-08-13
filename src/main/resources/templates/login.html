@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--Referenciando o Thymeleaf-->
+<html xmlns:th="http://thymeleaf.org">
+
+<div th:replace="includes/head :: head"></div>
+<div th:replace="includes/header :: header"></div>
+
+
+<body class="bodyLogin">
+    <section>
+
+        <div class="container" style="width: 60%; padding-bottom: 30px;padding-top: 30px;">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6 ColLogin">
+                    <form method="post">
+                        <div class="row centered">
+                            <div class="col-lg-1"></div>
+                            <div class="col-lg-10">
+                                <hr>
+
+                                <div class="form-group centered">
+                                    <label for="login">Login</label><br>
+                                    <input type="text" class="form-control" name="login" id="login">
+                                </div>
+                                <div class="form-group centered">
+                                    <label for="senha">Senha</label><br>
+                                    <input type="password" class="form-control" name="senha" id="senha">
+                                </div>
+                                <br>
+                                <a href="">Esqueceu a senha?</a>
+
+
+                            </div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3">
+                                <button type="submit" class="btn btn-primary">Entrar</button>
+                            </div>
+                            <div class="col-lg-3">
+                                <a class="btn btn-light" href="/UsuarioForm">Cadastrar</a>
+                                <!--<a href="/UsuarioForm"><button class="btn btnLogin">Cadastrar</button></a>
+						<input type="button" class="btn btnLogin" name="cadastrar" value="Cadastrar">-->
+                            </div>
+                            <div class="col-lg-3"></div>
+                        </div>
+                    </form>
+                    <br>
+                    <hr>
+                    <br>
+                    <div class="row centered">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6 centered">
+                            <p class="texto">2020 © - TodoList</p>
+                        </div>
+                        <div class="col-lg-3"></div>
+                    </div>
+                </div>
+                <div class="col-lg-3"></div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+
+
+</html>
