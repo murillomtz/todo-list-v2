@@ -2,7 +2,7 @@ package com.mtz.todolist.service;
 
 import java.util.List;
 
-import com.mtz.todolist.model.Tarefa;
+import com.mtz.todolist.model.entidades.Tarefa;
 
 public interface TarefaService {
 

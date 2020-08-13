@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.mtz.todolist.model.Tarefa;
+import com.mtz.todolist.model.entidades.Tarefa;
 import com.mtz.todolist.service.TarefaService;
 
 import org.springframework.beans.factory.annotation.Autowired;

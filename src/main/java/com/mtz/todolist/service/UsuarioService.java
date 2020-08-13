@@ -2,7 +2,7 @@ package com.mtz.todolist.service;
 
 import java.util.List;
 
-import com.mtz.todolist.model.Usuario;
+import com.mtz.todolist.model.entidades.Usuario;
 
 public interface UsuarioService {
 
@@ -17,5 +17,7 @@ public interface UsuarioService {
     void delete(Usuario usuario);
 
     boolean existsById(long usuarioId);
+
+    Usuario findByLogin(String login);
 
 }

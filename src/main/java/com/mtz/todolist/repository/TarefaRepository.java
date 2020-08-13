@@ -1,6 +1,6 @@
 package com.mtz.todolist.repository;
 
-import com.mtz.todolist.model.Tarefa;
+import com.mtz.todolist.model.entidades.Tarefa;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

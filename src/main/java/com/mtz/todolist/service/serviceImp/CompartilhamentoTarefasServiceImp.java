@@ -1,6 +1,6 @@
 package com.mtz.todolist.service.serviceImp;
 
-import com.mtz.todolist.model.CompartilhamentoTarefas;
+import com.mtz.todolist.model.entidades.CompartilhamentoTarefas;
 import com.mtz.todolist.repository.CompartilhamentoTarefasRepository;
 import com.mtz.todolist.service.CompartilhamentoTarefasService;
 import org.springframework.beans.factory.annotation.Autowired;

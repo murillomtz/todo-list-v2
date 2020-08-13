@@ -1,4 +1,4 @@
-package com.mtz.todolist.model;
+package com.mtz.todolist.model.entidades;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,7 +23,7 @@ public class Usuario implements Serializable {
     @Column(unique = true)
     private String login;
 
-    @NotBlank
+    @NotBlank(message = "O Nome é de preenchimento obrigatório.")
     private String nome;
 
     @NotBlank

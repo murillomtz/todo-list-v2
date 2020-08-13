@@ -15,7 +15,7 @@ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         <intercept-url pattern="/index.jsp" access="hasRole('ROLE_USER')" />
 
 <!--Pagina q sera redirecionado em paginas q deverá ter permissão-->
-        <form-login login-page="/login.jsp" login-processing-url="/fazerLogin" authentication-failure-url="/login.jsp?error" default-target-url="/index.jsp" />
+        <form-login login-page="/login.html" login-processing-url="/fazerLogin" authentication-failure-url="/login.jsp?error" default-target-url="/index.jsp" />
 
         <logout logout-url="/logout" logout-success-url="/login.jsp?logout" />
 

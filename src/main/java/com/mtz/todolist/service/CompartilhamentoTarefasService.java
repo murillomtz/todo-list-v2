@@ -1,6 +1,6 @@
 package com.mtz.todolist.service;
 
-import com.mtz.todolist.model.CompartilhamentoTarefas;
+import com.mtz.todolist.model.entidades.CompartilhamentoTarefas;
 
 import java.util.List;
 

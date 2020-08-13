@@ -2,7 +2,7 @@ package com.mtz.todolist.service.serviceImp;
 
 import java.util.List;
 
-import com.mtz.todolist.model.Usuario;
+import com.mtz.todolist.model.entidades.Usuario;
 import com.mtz.todolist.repository.UsuarioRepository;
 import com.mtz.todolist.service.UsuarioService;
 
@@ -45,6 +45,12 @@ public class UsuarioServiceImp implements UsuarioService {
     @Override
     public boolean existsById(long tarefaId) {
         return usuarioRepository.existsById(tarefaId);
+    }
+
+    @Override
+    public Usuario findByLogin(String login) {
+
+        return usuarioRepository.findByLogin(login);
     }
 
 }

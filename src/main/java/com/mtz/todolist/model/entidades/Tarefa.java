@@ -1,4 +1,4 @@
-package com.mtz.todolist.model;
+package com.mtz.todolist.model.entidades;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

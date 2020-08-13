@@ -1,8 +1,8 @@
 package com.mtz.todolist.utils;
 
-import com.mtz.todolist.model.CompartilhamentoTarefas;
-import com.mtz.todolist.model.Tarefa;
-import com.mtz.todolist.model.Usuario;
+import com.mtz.todolist.model.entidades.CompartilhamentoTarefas;
+import com.mtz.todolist.model.entidades.Tarefa;
+import com.mtz.todolist.model.entidades.Usuario;
 import com.mtz.todolist.repository.CompartilhamentoTarefasRepository;
 import com.mtz.todolist.repository.TarefaRepository;
 import com.mtz.todolist.repository.UsuarioRepository;
@@ -22,13 +22,14 @@ public class DummyData {
 
     private final CompartilhamentoTarefasRepository compartilhamentoRepository;
 
-    public DummyData(TarefaRepository tarefaRepository, UsuarioRepository usuarioRepository, CompartilhamentoTarefasRepository compartilhamentoRepository) {
+    public DummyData(TarefaRepository tarefaRepository, UsuarioRepository usuarioRepository,
+            CompartilhamentoTarefasRepository compartilhamentoRepository) {
         this.tarefaRepository = tarefaRepository;
         this.usuarioRepository = usuarioRepository;
         this.compartilhamentoRepository = compartilhamentoRepository;
     }
 
-    //@PostConstruct
+    // @PostConstruct
     public void savePosts() {
 
         List<Usuario> usuarios = new ArrayList<>();

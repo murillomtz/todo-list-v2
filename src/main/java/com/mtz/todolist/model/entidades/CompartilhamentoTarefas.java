@@ -1,4 +1,4 @@
-package com.mtz.todolist.model;
+package com.mtz.todolist.model.entidades;
 
 import javax.persistence.*;
 import java.io.Serializable;
