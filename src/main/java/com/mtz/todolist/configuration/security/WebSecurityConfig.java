@@ -27,6 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginPage("/login").permitAll().and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
+        // Removi o loginProcessingUrl("") porque o o processo de login que voces querem é o padrão
+        
     }
 
     @Override

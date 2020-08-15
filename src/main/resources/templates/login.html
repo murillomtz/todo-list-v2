@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--Referenciando o Thymeleaf-->
-<html xmlns:th="http://thymeleaf.org">
+<html>
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
@@ -25,11 +25,15 @@
             <div class="row">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6 ColLogin">
-                    <form method="post" th:action="@{login}">
+                
+                <!-- é preciso "th" na frente de algo que vc vai usar o thymeleaf e eu retirei a referencia com thymeleafe porque o projeto já tem a dependencia --> 
+                    <form method="post" th:action="@{/login}">
                         <div class="row centered">
                             <div class="col-lg-1"></div>
                             <div class="col-lg-10">
                                 <hr>
+
+<!-- Deixei como padrão "name" o username e password pro sistema identificar mais facil -->
 
                                 <div class="form-group centered">
                                     <label for="login">Login</label><br>
