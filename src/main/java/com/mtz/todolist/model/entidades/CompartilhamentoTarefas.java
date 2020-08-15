@@ -7,6 +7,8 @@ import java.io.Serializable;
 @Table(name = "TB_COMPARTILHAMENTO")
 public class CompartilhamentoTarefas implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

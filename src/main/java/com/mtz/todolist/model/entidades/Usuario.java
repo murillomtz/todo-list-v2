@@ -2,16 +2,20 @@ package com.mtz.todolist.model.entidades;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TB_USUARIO")
-public class Usuario implements Serializable {
+public class Usuario implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
 
@@ -36,13 +40,15 @@ public class Usuario implements Serializable {
 
     private Boolean ativo;
 
-    private Boolean adm;
-
     @OneToMany(mappedBy = "usuario")
     private List<Tarefa> tarefasProprias = new ArrayList<>();
 
     @OneToMany(mappedBy = "usuario")
     private List<CompartilhamentoTarefas> tarefasCompartilhadas = new ArrayList<>();
+
+    @ManyToMany
+    @JoinTable(name = "usuarios_roles", joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "login"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "nomeRole"))
+    List<Role> roles = new ArrayList<>();
 
     public Usuario() {
     }
@@ -54,7 +60,6 @@ public class Usuario implements Serializable {
         this.email = email;
         this.senha = senha;
         this.ativo = ativo;
-        this.adm = false;
     }
 
     public Long getId() {
@@ -109,28 +114,12 @@ public class Usuario implements Serializable {
         this.ativo = ativo;
     }
 
-    public Boolean isAdm() {
-        return this.adm;
-    }
-
-    public Boolean getAdm() {
-        return this.adm;
-    }
-
-    public void setAdm(Boolean adm) {
-        this.adm = adm;
-    }
-
     public List<CompartilhamentoTarefas> getTarefasCompartilhadas() {
         return this.tarefasCompartilhadas;
     }
 
     public void setTarefasCompartilhadas(List<CompartilhamentoTarefas> tarefas) {
         this.tarefasCompartilhadas = tarefas;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public Long getIdUser() {
@@ -143,6 +132,14 @@ public class Usuario implements Serializable {
 
     public void setTarefasProprias(List<Tarefa> tarefasProprias) {
         this.tarefasProprias = tarefasProprias;
+    }
+
+    public List<Role> getRoles() {
+        return this.roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
@@ -159,6 +156,53 @@ public class Usuario implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hashCode(idUser);
+    }
+
+    /* UserDetails Implementação */
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // TODO Auto-generated method stub
+        return this.roles;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        return this.login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return ativo;
+    }
+
+    @Override
+    public String toString() {
+        return "{" + " login='" + getLogin() + "'" + ", nome='" + getNome() + "'" + ", roles='" + getRoles() + "'"
+                + "}";
     }
 
 }
