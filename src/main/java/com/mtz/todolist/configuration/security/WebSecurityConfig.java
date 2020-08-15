@@ -23,15 +23,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.GET, "/").permitAll()
                 .antMatchers(HttpMethod.GET, "/").hasRole("ADMIN").antMatchers(HttpMethod.POST, "/").hasRole("ADMIN")
-                .anyRequest().authenticated().and().formLogin().loginProcessingUrl("/tarefas.html")
-                .loginPage("/login").loginProcessingUrl("/AuthenticationController.java").permitAll().and()
+                .anyRequest().authenticated().and().formLogin()
+                .loginPage("/login").permitAll().and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"));
 
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        // auth.inMemoryAuthentication().withUser("mtz").password("{noop}123").roles("ADMIN");
+//         auth.inMemoryAuthentication().withUser("mtz").password("{noop}123").roles("ADMIN");
         // auth.inMemoryAuthentication().withUser("user").password("{noop}123").roles("USER");
 
         auth.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());

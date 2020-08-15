@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-lg-3"></div>
                 <div class="col-lg-6 ColLogin">
-                    <form method="post" action="login">
+                    <form method="post" th:action="@{login}">
                         <div class="row centered">
                             <div class="col-lg-1"></div>
                             <div class="col-lg-10">
@@ -33,11 +33,11 @@
 
                                 <div class="form-group centered">
                                     <label for="login">Login</label><br>
-                                    <input type="text" class="form-control" name="login" id="login">
+                                    <input type="text" class="form-control" name="username" id="login">
                                 </div>
                                 <div class="form-group centered">
                                     <label for="senha">Senha</label><br>
-                                    <input type="password" class="form-control" name="senha" id="senha">
+                                    <input type="password" class="form-control" name="password" id="senha">
                                 </div>
                                 <br>
                                 <a href="">Esqueceu a senha?</a>
