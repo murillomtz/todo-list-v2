@@ -6,9 +6,13 @@ import java.util.List;
 import javax.validation.Valid;
 
 import com.mtz.todolist.model.entidades.Tarefa;
+import com.mtz.todolist.model.entidades.Usuario;
 import com.mtz.todolist.service.TarefaService;
+import com.mtz.todolist.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +26,12 @@ public class TarefaController {
 
     @Autowired
     TarefaService tarefaService;
+
+    @Autowired
+    UsuarioService usuarioService;
+
+    @Autowired
+    UsuarioController usuarioController;
 
     @RequestMapping(value = "/tarefas", method = RequestMethod.GET)
     public ModelAndView getTarefas() {
@@ -55,8 +65,16 @@ public class TarefaController {
         }
 
         tarefa.setData(LocalDate.now());
+
+        GetUserSessionController gsc = new GetUserSessionController();
+        // System.out.println("gsc-*-*-*-*- " + gsc);
+        // System.out.println("getUsuario-*-*-*-*- " + gsc.getUsuario());
+        Usuario usuario = usuarioController.getUsuariosByLogin(gsc.getUsuario().getLogin());
+        System.out.println("usuario-all-*-*-*-*- " + usuario);
+        tarefa.setUsuario(usuario);
         tarefaService.save(tarefa);
         return "redirect:/tarefas";
 
     }
+
 }
