@@ -38,9 +38,13 @@ public class DummyData {
     @PostConstruct
     public void savePosts() {
         /*
-         * SELECT usuario_id, role_id FROM public.usuarios_roles; --insert into
+         * --SELECT usuario_id, role_id FROM public.usuarios_roles; --insert into
          * usuarios_roles( usuario_id, role_id) values('admin','ROLE_ADMIN') --insert
          * into usuarios_roles( usuario_id, role_id) values('user','ROLE_USER');
+         * 
+         * --select * from usuarios_roles; ---select * from tb_tarefa select * from
+         * tb_usuario; --select * from tb_compartilhamento;
+         * 
          */
 
         List<Role> roles = new ArrayList<>();
@@ -52,6 +56,7 @@ public class DummyData {
                 "$2a$10$3Ly/PzXk.Teox2AFSniNKeJ5MSA/YMPne/ZXRUTy7z648AECRZ7Qy", true);
 
         user1.getRoles().add(r1);
+        user1.getRoles().add(r2);
 
         Usuario user2 = new Usuario(null, "user", "USUARIO", "user@gmail.com",
                 "$2a$10$3Ly/PzXk.Teox2AFSniNKeJ5MSA/YMPne/ZXRUTy7z648AECRZ7Qy", true);
@@ -66,6 +71,7 @@ public class DummyData {
 
         r1.getUsuarios().add(user1);
         roles.add(r1);
+
         r1.getUsuarios().add(user2);
         roles.add(r2);
 
@@ -107,22 +113,22 @@ public class DummyData {
 
         for (Role role : roles) {
             Role roleSaved = roleRepository.save(role);
-            System.out.println(roleSaved.getId());
+            System.out.println("ROLES   ----->  \n" + roleSaved.toString());
         }
 
         for (Usuario user : usuarios) {
             Usuario postSaved = usuarioRepository.save(user);
-            System.out.println(postSaved.getId());
+            System.out.println("USUARIOS   ----->  \n" + postSaved.toString());
         }
 
         for (Tarefa task : tarefas) {
             Tarefa ps = tarefaRepository.save(task);
-            System.out.println(ps.getId());
+            System.out.println("TAREFAS   ----->  \n" + ps.toString());
         }
 
         for (CompartilhamentoTarefas task : compartilhamentos) {
             CompartilhamentoTarefas ps = compartilhamentoRepository.save(task);
-            System.out.println(ps.getId());
+            System.out.println("Compartilhamentos   ----->  \n" + ps);
         }
 
     }

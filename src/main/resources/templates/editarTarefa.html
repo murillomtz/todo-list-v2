@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!--Referenciando o Thymeleaf-->
+
+<html xmlns:th="http://thymeleaf.org">
+
+<div th:replace="includes/head :: head"></div>
+<div th:replace="includes/header :: header"></div>
+
+
+<body>
+<section>
+
+    <div class="container" style="width: 60%; padding-bottom: 30px;padding-top: 30px;">
+        <th:block th:include="mensagemValidacao"></th:block>
+        <form method="post">
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="titulo" placeholder="Título **"
+                       th:value="${tarefa.titulo}">
+            </div>
+
+            <div class="form-group">
+
+
+                <label>
+                    <input type="checkbox" name="concluida" th:checked="${tarefa.concluida}"/>
+                    <span>Ativo</span>
+                </label>
+                <br>
+
+                <!--MOSTRAR DATA DE CRIAÇÃO-->
+                Hora de criação
+                <span><div th:text="${tarefa.data}"></div></span>
+
+
+            </div>
+
+
+            <textarea id="summernote" type="text" class="form-control" name="descricao"
+                      th:utext="${tarefa.descricao}"></textarea>
+
+            <small class="form-text text-muted">(*) Campos obrigatórios</small>
+
+            <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Alterar</button>
+            <!-- getTarefaDetails -->
+            <a th:href="${(#mvc.url('TC#getTarefaDetails').arg(0, tarefa.id)).build()}" class="btn btn-light"
+               role="button" style="margin-top: 10px;">Cancelar</a>
+            <a th:href="${(#mvc.url('TC#getTarefaDetails').arg(0, tarefa.id)).build()}" class="btn btn-light"
+               role="button" style="margin-top: 10px;">Add usuarios</a>
+        </form>
+    </div>
+</section>
+
+<script>
+
+        $('#summernote').summernote({
+            placeholde: 'Texto *',
+            tabsize: 2,
+            height: 300
+        });
+
+
+
+
+
+
+</script>
+
+</body>
+
+
+</html>

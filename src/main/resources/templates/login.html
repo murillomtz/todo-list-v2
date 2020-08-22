@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <!--Referenciando o Thymeleaf-->
-<html>
+<html xmlns:th="http://thymeleaf.org">
+
 
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
-        integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+          integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
 </head>
 <header>
     <nav class="navbar-expand-lg navbar navbar-dark bg-primary">
         <a class=" navbar-brand" style="font-weight: bold; text-align: center;">TODO List v2.0</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -19,67 +20,67 @@
 
 
 <body class="bodyLogin">
-    <section>
+<section>
 
-        <div class="container" style="width: 60%; padding-bottom: 30px;padding-top: 30px;">
-            <div class="row">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6 ColLogin">
+    <div class="container" style="width: 60%; padding-bottom: 30px;padding-top: 30px;">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 ColLogin">
 
-                    <!-- � preciso "th" na frente de algo que vc vai usar o thymeleaf e eu retirei a referencia com thymeleafe porque o projeto j� tem a dependencia -->
-                    <form method="post" th:action="@{/login}">
-                        <div class="row centered">
-                            <div class="col-lg-1"></div>
-                            <div class="col-lg-10">
-                                <hr>
-
-                                <!-- Deixei como padr�o "name" o username e password pro  sistema identificar mais facil -->
-
-                                <div class="form-group centered">
-                                    <label for="login">Login</label><br>
-                                    <input type="text" class="form-control" name="username" id="login">
-                                </div>
-                                <div class="form-group centered">
-                                    <label for="senha">Senha</label><br>
-                                    <input type="password" class="form-control" name="password" id="senha">
-                                </div>
-                                <br>
-                                <a href="">Esqueceu a senha?</a>
-
-
-                            </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg-3"></div>
-                            <div class="col-lg-3">
-                                <button type="submit" class="btn btn-primary">Entrar</button>
-                            </div>
-                            <div class="col-lg-3">
-                                <a class="btn btn-light" href="/UsuarioForm">Cadastrar</a>
-                                <!--<a href="/UsuarioForm"><button class="btn btnLogin">Cadastrar</button></a>
-						<input type="button" class="btn btnLogin" name="cadastrar" value="Cadastrar">-->
-                            </div>
-                            <div class="col-lg-3"></div>
-                        </div>
-                    </form>
-                    <br>
-                    <hr>
-                    <br>
+                <!-- � preciso "th" na frente de algo que vc vai usar o thymeleaf e eu retirei a referencia com thymeleafe porque o projeto j� tem a dependencia -->
+                <form method="post" th:action="@{/login}">
                     <div class="row centered">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                            <hr>
+
+                            <!-- Deixei como padr�o "name" o username e password pro  sistema identificar mais facil -->
+
+                            <div class="form-group centered">
+                                <label for="login">Login</label><br>
+                                <input type="text" class="form-control" name="username" id="login">
+                            </div>
+                            <div class="form-group centered">
+                                <label for="senha">Senha</label><br>
+                                <input type="password" class="form-control" name="password" id="senha">
+                            </div>
+                            <br>
+                            <a href="">Esqueceu a senha?</a>
+
+
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+                    <br>
+                    <div class="row">
                         <div class="col-lg-3"></div>
-                        <div class="col-lg-6 centered">
-                            <p class="texto">2020 © - TodoList</p>
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-primary">Entrar</button>
+                        </div>
+                        <div class="col-lg-3">
+                            <a class="btn btn-light" href="/UsuarioForm">Cadastrar</a>
+                            <!--<a href="/UsuarioForm"><button class="btn btnLogin">Cadastrar</button></a>
+                    <input type="button" class="btn btnLogin" name="cadastrar" value="Cadastrar">-->
                         </div>
                         <div class="col-lg-3"></div>
                     </div>
+                </form>
+                <br>
+                <hr>
+                <br>
+                <div class="row centered">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6 centered">
+                        <p class="texto">2020 © - TodoList</p>
+                    </div>
+                    <div class="col-lg-3"></div>
                 </div>
-                <div class="col-lg-3"></div>
             </div>
-
+            <div class="col-lg-3"></div>
         </div>
-    </section>
+
+    </div>
+</section>
 
 </body>
 

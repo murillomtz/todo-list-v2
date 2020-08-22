@@ -49,4 +49,13 @@ public class CompartilhamentoTarefas implements Serializable {
     public void setTarefa(Tarefa tarefa) {
         this.tarefa = tarefa;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " id='" + getId() + "'" +
+            ", usuario='" + getUsuario().toString() + "'" +
+            ", tarefa='" + getTarefa().toString() + "'" +
+            "}";
+    }
 }

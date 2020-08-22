@@ -14,5 +14,5 @@ public class AuthenticationController {
         return "login";
     }
 
-    /// criar um coletor de erro parecido savetaerfa
+    /// criar um coletor de erro igual savetaerfa
 }

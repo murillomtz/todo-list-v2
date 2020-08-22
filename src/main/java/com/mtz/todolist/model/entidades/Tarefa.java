@@ -134,4 +134,11 @@ public class Tarefa implements Serializable {
         return Objects.hashCode(id);
     }
 
+    @Override
+    public String toString() {
+        return "{" + " id='" + getId() + "'" + ", titulo='" + getTitulo() + "'" + ", descricao='" + getDescricao() + "'"
+                + ", data='" + getData() + "'" + ", concluida='" + isConcluida() + "'" + ", usuario='" + getUsuario()
+                + "'" + "}";
+    }
+
 }

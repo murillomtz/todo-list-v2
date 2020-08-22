@@ -7,52 +7,60 @@
 
 
 <body>
-    <main>
-        <div class="container" style="width: 70%; padding-top: 40px;">
-            <article>
-                <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span
-                        th:text="${tarefa.titulo}"></span></h1>
-                <p>
-                    <class class="card-subtitle mb-2 text-muted">
+	<main>
+		<div class="container" style="width: 70%; padding-top: 40px;">
+			<article>
+				<h1 class="card-title"
+					style="font-weight: bold; margin-bottom: 20px;">
+					<span th:text="${tarefa.titulo}"></span>
+				</h1>
+				<p>
+					<class class="card-subtitle mb-2 text-muted"> <i
+						class="material-icons">schedule</i> <span th:text="${tarefa.data}"></span>
+				</p>
+				<p>
+				<div th:if="${tarefa.concluida} == true">
+					<p>
+						<i class="material-icons">published_with_changes</i> CONCLUIDA
+					</p>
+				</div>
+				<div th:if="${tarefa.concluida} != true">
+					<p>
+						<i class="material-icons">published_with_changes</i> iNACAMADA
+					</p>
+				</div>
+				</p>
+				<p>
+				<div th:if="${tarefa.usuario} == null">
+					<p>
+						<i class="material-icons">perm_identity</i>não há usuarios
+					</p>
+				</div>
+				<div th:if="${tarefa.usuario} != null">
+					<p class="card-text" style="margin-top: 0px;">
+						<i class="material-icons">perm_identity</i><span
+							th:text="${tarefa.usuario.nome}"></span>
+					</p>
+				</div>
+				</p>
 
-                        <i class="material-icons">schedule</i>
-                        <span th:text="${tarefa.data}"></span>
-                    </p>
-                    <p>
-                        
-                        <div th:if="${tarefa.concluida} == true">
-                            <p><i class="material-icons">published_with_changes</i>
-                            CONCLUIDA</p>
-                        </div>
-                        <div th:if="${tarefa.concluida} != true">
-                            <p><i class="material-icons">published_with_changes</i>
-                            iNACAMADA</p>
-                        </div>
-                    </p>
-                    <p>
-                        
-                        <div th:if="${tarefa.usuario} == null">
-                            <p><i class="material-icons">perm_identity</i>não há usuarios</p>
-                        </div>
-                        <div th:if="${tarefa.usuario} != null">
-                            <p class="card-text" style="margin-top: 0px;"><i class="material-icons">perm_identity</i><span
-                                    th:text="${tarefa.usuario.nome}"></span>
-                            </p>
-                        </div>
-                    </p>
+				</class>
+				</p>
+				<section>
+					<!--utext - textp longo-->
+					<p class="card-text" style="margin-top: 10px; margin-left: 22px;">
+						<span th:utext="${tarefa.descricao}"></span>
+					</p>
+				</section>
 
-                    </class>
-                </p>
-                <section>
-                    <!--utext - textp longo-->
-                    <p class="card-text" style="margin-top: 10px;margin-left: 22px;"><span th:utext="${tarefa.descricao}"></span></p>
-                </section>
+			</article>
 
-            </article>
+			<a
+				th:href="${(#mvc.url('TC#getEditarTarefa').arg(0, tarefa.id)).build()}"
+				class="btn btn-primary" role="button" style="margin-top: 10px;">Editar</a>
+		</div>
 
-        </div>
-
-    </main>
+	</main>
 
 </body>
 
