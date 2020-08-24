@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--Referenciando o Thymeleaf-->
+<html xmlns:th="http://thymeleaf.org">
+
+<div th:replace="includes/head :: head"></div>
+<div th:replace="includes/header :: header"></div>
+
+
+<body>
+<section>
+	
+	<div class="container" style=" padding-bottom: 30px; padding-top: 30px;">
+		
+		<table class="table table-sm">
+			<thead class="bg-primary">
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">Nome</th>
+				<th scope="col">Login</th>
+				<th scope="col">E-mail</th>
+			</tr>
+			</thead>
+			<div class="card text-right" th:each="usuario :${usuarios}">
+				
+				
+				<tbody>
+				<tr>
+					<th scope="row"><span th:text="${usuario.id}"></span></th>
+					<td><span th:text="${usuario.nome}"></span></td>
+					<td><span th:text="${usuario.login}"></span></td>
+					<td><span th:text="${usuario.email}"></span></td>
+				</tr>
+		</table>
+	
+	</div>
+	</div>
+
+</section>
+
+</body>
+
+
+</html>

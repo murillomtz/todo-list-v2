@@ -50,17 +50,17 @@ public class UsuarioController {
         return mv;
     }
 
-    @RequestMapping(value = "/novausuario", method = RequestMethod.GET)
+    @RequestMapping(value = "/novousuario", method = RequestMethod.GET)
     public String getUsuarioForm() {
 
-        return "usuariosForm";
+        return "usuarioForm";
     }
 
     @RequestMapping(value = "/novousuario", method = RequestMethod.POST)
     public String saveUsuario(@Valid Usuario usuario, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
             attributes.addFlashAttribute("mensagem", "Verifique se os campos obrigatorios foram preechidos!");
-            return "redirect:/novausuario";
+            return "redirect:/novousuario";
         }
 
         usuarioService.save(usuario);
