@@ -61,11 +61,11 @@ Este repositório contém sua própria interface. Não depende de `todo_list_flu
 
 ## Capturas do sistema
 
-Capturas reais obtidas em execução local em 12/10/2026.
+Capturas reais da interface em execução local. Nova coleta em 12–13/10/2026, com enquadramento fixo de **1440 × 900 pixels (web)**.
 
-### Página inicial
+### Login renderizado pelo backend
 
-![Página inicial](docs/screenshots/inicio.jpg)
+![Login renderizado pelo backend](docs/screenshots/inicio.jpg)
 
 ## Histórico
 
